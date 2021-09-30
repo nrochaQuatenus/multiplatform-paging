@@ -12,13 +12,13 @@ plugins {
 
 val MP_PAGING_VERSION: String by rootProject.extra
 
-val sonatypePropertiesFile = project.rootProject.file("sonatype.properties")
-val sonatypeProperties = Properties()
-sonatypeProperties.load(FileInputStream(sonatypePropertiesFile))
-
-rootProject.extra["signing.keyId"] = sonatypeProperties.getProperty("signing.key_id")
-rootProject.extra["signing.password"] = sonatypeProperties.getProperty("signing.password")
-rootProject.extra["signing.secretKeyRingFile"] = sonatypeProperties.getProperty("signing.secret_key_ring_file")
+//val sonatypePropertiesFile = project.rootProject.file("sonatype.properties")
+//val sonatypeProperties = Properties()
+//sonatypeProperties.load(FileInputStream(sonatypePropertiesFile))
+//
+//rootProject.extra["signing.keyId"] = sonatypeProperties.getProperty("signing.key_id")
+//rootProject.extra["signing.password"] = sonatypeProperties.getProperty("signing.password")
+//rootProject.extra["signing.secretKeyRingFile"] = sonatypeProperties.getProperty("signing.secret_key_ring_file")
 
 val artifactName = "multiplatform-paging"
 val artifactGroup = "io.github.kuuuurt"
@@ -46,10 +46,10 @@ group = artifactGroup
 version = artifactVersion
 
 android {
-    compileSdkVersion(30)
+    compileSdkVersion(31)
     defaultConfig {
         minSdkVersion(21)
-        targetSdkVersion(30)
+        targetSdkVersion(31)
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -90,17 +90,17 @@ publishing {
         maven {
             name = "mavenCentral"
             url = URI("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = sonatypeProperties.getProperty("ossrh.username")
-                password = sonatypeProperties.getProperty("ossrh.password")
-            }
+//            credentials {
+//                username = sonatypeProperties.getProperty("ossrh.username")
+//                password = sonatypeProperties.getProperty("ossrh.password")
+//            }
         }
     }
 }
 
-signing {
-    sign(publishing.publications)
-}
+//signing {
+//    sign(publishing.publications)
+//}
 
 val javadocJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")

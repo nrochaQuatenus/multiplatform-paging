@@ -70,10 +70,10 @@ kotlin {
 //    val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget
 //    if (isDevice) {
 //        iosTarget = ::iosArm64
-//        pagingIos = "com.kuuuurt:multiplatform-paging-iosArm64:$MP_PAGING_VERSION"
+//        pagingIos = "com.kuuuurt:paging-iosArm64:$MP_PAGING_VERSION"
 //    } else {
 //        iosTarget = ::iosX64
-//        pagingIos = "com.kuuuurt:multiplatform-paging-iosX64:$MP_PAGING_VERSION"
+//        pagingIos = "com.kuuuurt:paging-iosX64:$MP_PAGING_VERSION"
 //    }
 //
 //    iosTarget("ios") {
@@ -91,7 +91,7 @@ kotlin {
 
     sourceSets["commonMain"].dependencies {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION")
-        implementation("io.ktor:ktor-client-core:1.6.0")
+        implementation("io.ktor:ktor-client-core:1.6.3")
         api("io.github.kuuuurt:multiplatform-paging:$MP_PAGING_VERSION")
     }
 

@@ -43,7 +43,11 @@ actual class Pager<K : Any, V : Any> actual constructor(
         loadItems(LoadDirection.NEXT)
     }
 
-    private fun loadItems(loadDirection: LoadDirection) {
+    fun loadCurrent() {
+        loadItems(null)
+    }
+
+    private fun loadItems(loadDirection: LoadDirection?) {
         val pagingResult = currentPagingResult.value
         val key = if (pagingResult == null) {
             initialKey
@@ -51,6 +55,7 @@ actual class Pager<K : Any, V : Any> actual constructor(
             when (loadDirection) {
                 LoadDirection.NEXT -> pagingResult.nextKey()
                 LoadDirection.PREVIOUS -> pagingResult.prevKey()
+                null -> pagingResult.currentKey
             }
         }
 
